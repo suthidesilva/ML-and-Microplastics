@@ -3,6 +3,8 @@ This research introduces an automated approach using machine learning to identif
 
 # Microplastics Detection Using Machine Learning
 
+Demo - https://hiding-spaceblue-ferret-473.vscodeedu.app
+
 A specialized image detection program that uses TensorFlow for identifying and classifying microplastics in water samples from the Boise River Basin. This project utilizes transfer learning with Google's Inception model to classify different types of microplastics including fibers, beads, films, foam, and fragments.
 
 ## Features
