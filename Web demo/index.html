@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microplastics Detection System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preload" as="image" href="https://assets.newatlas.com/dims4/default/cffdd2f/2147483647/strip/true/crop/1771x996+0+0/resize/1771x996!/quality/90/?url=http://newatlas-brightspot.s3.amazonaws.com/bd/42/0b2fd92a4e0397589dc805eca5b2/depositphotos-390988646-l.jpg">
+</head>
+<body>
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+        <em>Light Mode</em>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>AI Microplastics Detection System</h1>
+            <h2>Suthi de Silva, Dr. Rachel Headley, College of Idaho</h2>
+            <br>
+            <p><i>A specialized image detection program that uses TensorFlow for identifying and classifying microplastics in water samples from the Boise River Basin. This project utilizes transfer learning with Google's Inception model to classify different types of microplastics including fibers, beads, films, foam, and fragments.</i></p>
+            <br>
+            <p><b>Upload an image to analyze microplastic content</b></p>
+        </div>
+
+        <div class="sample-images">
+            <h3>Try one of our samples:</h3>
+            <br>
+            <div class="sample-images-container">
+                <img src="Bead_002.png" alt="Bead 2" class="sample-image" data-category="Beads">
+                <img src="Fiber_017.png" alt="Fiber 17" class="sample-image" data-category="Fibers">
+                <img src="Fiber_015.png" alt="Fiber 15" class="sample-image" data-category="Fibers">
+                <img src="Bead_003.png" alt="Bead 3" class="sample-image" data-category="Beads">
+                <img src="Fragment_001.png" alt="Fragment 1" class="sample-image" data-category="Fragments">
+                <img src="Fiber_011.png" alt="Fiber 11" class="sample-image" data-category="Fibers">
+                <img src="Fiber_014.png" alt="Fiber 14" class="sample-image" data-category="Fibers">
+                <img src="Bead_001.png" alt="Bead 1" class="sample-image" data-category="Beads">
+                <img src="Fiber_016.png" alt="Fiber 16" class="sample-image" data-category="Fibers">
+            </div>            
+        </div>
+
+        <div class="upload-section">
+            <div class="drop-zone" id="dropZone">
+                <p>OR drag and drop image here or click to upload</p>
+                <input type="file" id="fileInput" hidden accept="image/*">
+            </div>
+            <div class="loading-spinner" id="loadingSpinner"></div>
+            <img id="previewImage" class="preview-image" style="display: none;">
+            
+            <div class="file-info">
+                <h3>Supported Keywords</h3>
+                <div class="keyword-categories">
+                    <div class="keyword-category">
+                        <h4>Beads</h4>
+                        <p>bead, beads, sphere, spherical</p>
+                    </div>
+                    <div class="keyword-category">
+                        <h4>Fibers</h4>
+                        <p>fiber, fibers, fibre, fibres, thread, threads</p>
+                    </div>
+                    <div class="keyword-category">
+                        <h4>Films</h4>
+                        <p>film, films, sheet, sheets</p>
+                    </div>
+                    <div class="keyword-category">
+                        <h4>Foam</h4>
+                        <p>foam, foams, polystyrene</p>
+                    </div>
+                    <div class="keyword-category">
+                        <h4>Fragments</h4>
+                        <p>fragment, fragments, piece, pieces</p>
+                    </div>
+                    <div class="keyword-category">
+                        <h4>Organic</h4>
+                        <p>organic, natural, plant, algae</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <h2>Analysis Results</h2>
+            <div class="result-item">
+                <p>Beads</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="beadsProgress"></div>
+                </div>
+                <span id="beadsPercentage">0%</span>
+            </div>
+            <div class="result-item">
+                <p>Fibers</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="fibersProgress"></div>
+                </div>
+                <span id="fibersPercentage">0%</span>
+            </div>
+            <div class="result-item">
+                <p>Films</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="filmsProgress"></div>
+                </div>
+                <span id="filmsPercentage">0%</span>
+            </div>
+            <div class="result-item">
+                <p>Foam</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="foamProgress"></div>
+                </div>
+                <span id="foamPercentage">0%</span>
+            </div>
+            <div class="result-item">
+                <p>Fragments</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="fragmentsProgress"></div>
+                </div>
+                <span id="fragmentsPercentage">0%</span>
+            </div>
+            <div class="result-item">
+                <p>Organic Matter</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="organicProgress"></div>
+                </div>
+                <span id="organicPercentage">0%</span>
+            </div>
+            <div class="result-item">
+                <p>Undefined</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="undefinedProgress"></div>
+                </div>
+                <span id="undefinedPercentage">0%</span>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>AI Microplastics Detection System</p>
+                <p>College of Idaho</p>
+                <address>
+                    2112 Cleveland Blvd<br>
+                    Caldwell, ID 83605<br>
+                    <a href="tel:+12084595011">(208) 459-5011</a><br>
+                    <a href="mailto:microplastics@collegeofidaho.edu">microplastics@collegeofidaho.edu</a>
+                </address>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="https://github.com/suthidesilva/ML-and-Microplastics">About the Project</a></li>
+                    <li><a href="https://www.collegeofidaho.edu/news/2024-murdock-college-science-research">Research Papers</a></li>
+                    <li><a href="https://www.collegeofidaho.edu/sites/default/files/styles/event_news_teaser/public/2024-11/20241109_213129049_iOS%201.jpg?h=71976bb4&itok=RnGTezII">Our Team</a></li>
+                    <li><a href="https://github.com/suthidesilva/ML-and-Microplastics/blob/main/LICENSE">Privacy Policy</a></li>
+                    <li><a href="https://github.com/suthidesilva/ML-and-Microplastics/blob/main/README.md">Terms of Use</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://twitter.com/collegeofidaho" class="social-icon" aria-label="Twitter">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+                    </a>
+                    <a href="https://github.com/suthidesilva/ML-and-Microplastics" class="social-icon" aria-label="GitHub">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/school/the-college-of-idaho" class="social-icon" aria-label="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 AI Microplastics Detection System. All rights reserved.</p>
+            <p>Licensed under the MIT License</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
