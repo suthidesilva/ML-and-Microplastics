@@ -1,6 +1,5 @@
 # ML-and-Microplastics
-![microplastics]([relative/path/to/image.jpg](https://assets.newatlas.com/dims4/default/cffdd2f/2147483647/strip/true/crop/1771x996+0+0/resize/1771x996!/quality/90/?url=http://newatlas-brightspot.s3.amazonaws.com/bd/42/0b2fd92a4e0397589dc805eca5b2/depositphotos-390988646-l.jpg))
-
+![Ocean Pollution](https://assets.newatlas.com/dims4/default/cffdd2f/2147483647/strip/true/crop/1771x996+0+0/resize/1771x996!/quality/90/?url=http://newatlas-brightspot.s3.amazonaws.com/bd/42/0b2fd92a4e0397589dc805eca5b2/depositphotos-390988646-l.jpg "Ocean Pollution Image")
 
 This research introduces an automated approach using machine learning to identify and classify microplastics in water samples from the Boise River Basin.
 
