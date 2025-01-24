@@ -26,7 +26,7 @@ A specialized image detection program that uses TensorFlow for identifying and c
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/microplastics-detection.git
+git clone https://github.com/suthidesilva/ML-and-Microplastics
 cd microplastics-detection
 ```
 
