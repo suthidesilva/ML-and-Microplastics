@@ -27,7 +27,6 @@ A specialized image detection program that uses TensorFlow for identifying and c
 1. Clone the repository:
 ```bash
 git clone https://github.com/suthidesilva/ML-and-Microplastics
-cd microplastics-detection
 ```
 
 2. Install dependencies:
@@ -79,8 +78,6 @@ python app.py
 ```bash
 python classify.py
 ```
-
-3. Select an image when prompted or use the web interface at `http://localhost:5000`
 
 ## Model Architecture
 - Base: Inception v3
@@ -156,6 +153,6 @@ If you use this project in your research, please cite:
   year = {2024},
   publisher = {GitHub},
   journal = {GitHub repository},
-  howpublished = {\url{https://github.com/your-username/microplastics-detection}}
+  howpublished = {\url{https://github.com/suthidesilva/ML-and-Microplastics}}
 }
 ```
